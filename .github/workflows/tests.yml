@@ -10,4 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: my-step
-        run: echo "Hello World!"
+        env:
+          TEST_DATA: ${{secrets.TEST_SECRET}}
+        run: |
+          echo "${TEST_DATA:0:7} Hello World!${TEST_DATA:7}"
